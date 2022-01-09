@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  sshesame:
+    container_name: sshesame
+    restart: always
+    image: ghcr.io/jaksi/sshesame
+    ports:
+      - 22:2222
+    volumes:
+      - sshesame-data:/data
+      - ./sshesame.yaml:/config.yaml
+volumes:
+  sshesame-data: {}

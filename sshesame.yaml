@@ -1,0 +1,41 @@
+server:
+  listen_address: 0.0.0.0:2222
+
+  # Fake internal services for handling direct-tcpip channels (`ssh -L`).
+  # If unspecified or null, sensible defaults will be used.
+  # If empty, no direct-tcpip channels will be accepted.
+  tcpip_services:
+    25: SMTP
+    80: HTTP
+    110: POP3
+    587: SMTP
+    8080: HTTP
+
+logging:
+  # The log file to output activity logs to. Debug and error logs are still written to standard error.
+  # If unspecified or null, activity logs are written to standard out.
+  file: null
+
+  # Make activity logs JSON-formatted instead of human readable.
+  json: true
+
+  # Include timestamps in the logs.
+  timestamps: true
+
+  # Log full raw details of all global requests, channels and channel requests.
+  debug: false
+
+  # Address to export and serve prometheus metrics on.
+  # If unspecified or null, metrics are not served.
+  metrics_address: null
+
+ssh_proto:
+  # The version identification string to announce in the public handshake.
+  # If unspecified or null, a reasonable default is used.
+  # Note that RFC 4253 section 4.2 requires that this string start with "SSH-2.0-".
+  version: SSH-2.0-sshesame
+
+  # Sent to the client after key exchange completed but before authentication.
+  # If unspecified or null, a reasonable default is used.
+  # If empty, no banner is sent.
+  banner: This is a private server, everything is logged and monitored.
